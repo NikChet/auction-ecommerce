@@ -8,6 +8,7 @@ class CommerceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("Okay");
 	}
 
 }
