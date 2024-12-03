@@ -133,44 +133,6 @@ public class Product {
         this.brand = brand;
         this.img = img;
         this.stock = stock;
-    }
-    
-    
-
-    
-    // private long product_id;
-    // private String product_name;
-    // private String description;
-    // public product(long id, String product_name, String description) {
-    //     this.product_id = id;
-    //     this.product_name = product_name;
-    //     this.description = description;
-    // }
-    // public product() {
-    //     super();
-    // }
-    // public long getId() {
-    //     return product_id;
-    // }
-    // public void setId(long id) {
-    //     this.product_id = id;
-    // }
-    // public String getProduct_name() {
-    //     return product_name;
-    // }
-    // public void setProduct_name(String product_name) {
-    //     this.product_name = product_name;
-    // }
-    // public String getDescription() {
-    //     return description;
-    // }
-    // public void setDescription(String description) {
-    //     this.description = description;
-    // }
-    // @Override
-    // public String toString() {
-    //     return "product [id=" + id + ", product_name=" + product_name + ", description=" + description + "]";
-    // }
-    
+            }
     
 }
