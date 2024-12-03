@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.http.HttpStatus;
 // import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+// import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 // import com.auction.commerce.entity.User;
 import com.auction.commerce.entity.Product;
+// import com.auction.commerce.security.JWTUtil;
 import com.auction.commerce.entity.Cart;
 import com.auction.commerce.services.UserService;
 import com.auction.commerce.services.productService;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+// @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class GetDefaultResponse {
 
@@ -56,10 +58,10 @@ public class GetDefaultResponse {
         return ResponseEntity.ok(p);
      }
 
-    @RequestMapping("/login")
-    public String loginStatus(){
-        return "Success";
-    }
+    // @RequestMapping("/login")
+    // public String loginStatus(){
+    //     return "Success";
+    // }
 
     // @GetMapping("/login/{name}")
     // public login getUserInfo(@PathVariable String name) {
@@ -67,16 +69,16 @@ public class GetDefaultResponse {
     //     return login_passWord.User_password(name);
     // }
 
-    @GetMapping("/login/{name}")
-    public ResponseEntity<String> getUserInfo(@PathVariable String name){
-        String password = uService.user_password(name);
-        if (password != null) {
-            System.out.print(password);
-            return ResponseEntity.ok(password);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+    // @GetMapping("/login/{name}")
+    // public ResponseEntity<String> getUserInfo(@PathVariable String name){
+    //     String password = uService.user_password(name);
+    //     if (password != null) {
+    //         System.out.print(password);
+    //         return ResponseEntity.ok(password);
+    //     } else {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    // }
 
     @GetMapping("/cart/{username}")
     public List<Cart> getAllProductsForUsername(@PathVariable String username){

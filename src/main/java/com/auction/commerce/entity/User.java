@@ -13,13 +13,14 @@ import jakarta.persistence.Table;
 public class User {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // private int id;
     @Column(name="username")
     private String username;
 
     @Column(name="password")
-    private String passWord;
+    private String password;
+
+    @Column(name = "role")
+    private String role;
 
     public User() {
         super();
@@ -27,28 +28,31 @@ public class User {
     
     public User(String userName, String passWord) {
         this.username = userName;
-        this.passWord = passWord;
+        this.password = passWord;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public String getRole(){
+        return role;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "login [userName=" + username + ", passWord=" + passWord + "]";
+        return "login [userName=" + username + ", passWord=" + password + "]";
     }
     
     

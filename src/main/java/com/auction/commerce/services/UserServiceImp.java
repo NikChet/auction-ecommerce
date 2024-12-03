@@ -1,46 +1,39 @@
 package com.auction.commerce.services;
 
 import java.lang.String;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import com.auction.commerce.entity.User;
-// import com.auction.commerce.entity.User;
 import com.auction.commerce.repository.UserRepository;
-// import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
 
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImp implements UserService, UserDetailsService {
 
-    // List<login> list = new ArrayList<>();
     @Autowired
-    private UserRepository user_repo;
+    private UserRepository userRepo;
 
 
     @Override
-    public String user_password(String uname) {
-        // list.add(new login("user1", "pass1"));
-        // list.add(new login("user2", "pass2"));
+    public String user_password(String username) throws UsernameNotFoundException {
+       return userRepo.findByUsername(username)
+       .map(User::getPassword)
+       .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
 
-        // for(login l : list){
-        //     if(l.getUserName().equals(name)){
-        //         return l.getPassWord();
-        //     }
-        // }
-        // System.out.println(lgRepo.findById(name));
-        // return user_repo.findByUserName(name);
-        try{
-            User u = user_repo.findByUserName(uname);
-            return u.getPassWord();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return "Error";
-        }
-        
-        
-        
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+        User user = userRepo.findByUsername(username)
+        .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Collections.singletonList(authority)); //No roles/authorities assigned for now
     }
     
 }
