@@ -4,11 +4,14 @@ package com.auction.commerce.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.*;
 
@@ -26,8 +29,8 @@ public class User implements UserDetails{
     @Column(name="password")
     private String password;
 
-    @Column(name = "role")
-    private String role;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Role role; // One-to-One relationship with Role
 
     public User() {
         super();
@@ -42,9 +45,6 @@ public class User implements UserDetails{
         return password;
     }
 
-    public String getRole(){
-        return role;
-    }
     public void setUsername(String username) {
         this.username = username;
     }
@@ -53,6 +53,16 @@ public class User implements UserDetails{
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+        if (role != null) {
+            role.setUser(this); // Ensure bidirectional mapping consistency
+        }
+    }
     @Override
     public String toString() {
         return "login [userName=" + username + ", passWord=" + password + "]";

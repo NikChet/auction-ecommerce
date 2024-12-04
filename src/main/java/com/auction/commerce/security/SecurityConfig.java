@@ -35,8 +35,8 @@ public class SecurityConfig {
         http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/signup","/auth/login").permitAll() // Use antMatchers for request matching
-                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN") // USER or ADMIN roles can access /user/**
-                .requestMatchers("/moderator/**").hasRole("MODERATOR") // MODERATOR role access
+                .requestMatchers("/user/**").hasAnyRole("BUYER", "ADMIN") // USER or ADMIN roles can access /user/**
+                .requestMatchers("/seller/**").hasRole("SELLER") // MODERATOR role access
                 .anyRequest().authenticated() // All other endpoints require authentication
                 )
                 .sessionManagement(session -> session
