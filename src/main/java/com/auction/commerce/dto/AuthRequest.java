@@ -1,8 +1,8 @@
-package com.auction.commerce.controller;
+package com.auction.commerce.dto;
 
 public class AuthRequest {
-    private String username;
-    private String password;
+    private String username = "bhargavi";
+    private String password = "pass1";
 
     public AuthRequest(String username, String password){
         this.username = username;
