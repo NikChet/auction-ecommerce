@@ -3,7 +3,6 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import com.auction.commerce.entity.Cart;
 import com.auction.commerce.services.UserService;
 import com.auction.commerce.services.productService;
 import com.auction.commerce.services.cartSevice;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -42,7 +40,6 @@ public class GetDefaultResponse {
         return ResponseEntity.ok(list);
     }
 
-    // @GetMapping("/products/{id}")
     @RequestMapping(value = "/products/{Id}", method = RequestMethod.GET)
      public ResponseEntity<Product> getProductById(@PathVariable String Id){
         // Optional<product> p = Product_service.findProductById(Id);

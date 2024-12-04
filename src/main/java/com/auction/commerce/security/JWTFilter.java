@@ -17,17 +17,13 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-// import javax.servlet.FilterChain;
-// import javax.servlet.ServletException;
-// import javax.servlet.http.HttpServletRequest;
-// import javax.servlet.http.HttpServletResponse;
-// import java.io.IOException;
 
 
 @Component
 public class JWTFilter extends OncePerRequestFilter {
-    // @Autowired private UserDetailsService userDetailsService;
-    @Autowired private JWTUtil jwtUtil;
+    
+    @Autowired 
+    private JWTUtil jwtUtil;
 
     private final HandlerExceptionResolver handlerExceptionResolver;
 

@@ -1,31 +1,20 @@
 package com.auction.commerce.controller;
 
-import javax.naming.AuthenticationException;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auction.commerce.security.JWTUtil;
-import com.auction.commerce.services.productService;
-import com.auction.commerce.dto.AuthRequest;
 import com.auction.commerce.dto.LoginUserDto;
 import com.auction.commerce.dto.RegisterUserDto;
 import com.auction.commerce.entity.User;
 import com.auction.commerce.services.AuthenticationServiceImpl;
 
-// @CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 public class AuthController {
     
-    // private final AuthenticationManager authenticationManager;
     private final JWTUtil jwtUtil;
     private final AuthenticationServiceImpl authenticationService;
 

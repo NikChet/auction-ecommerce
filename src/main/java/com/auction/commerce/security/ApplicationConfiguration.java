@@ -1,6 +1,5 @@
 package com.auction.commerce.security;
 
-import com.auction.commerce.entity.User;
 import com.auction.commerce.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
