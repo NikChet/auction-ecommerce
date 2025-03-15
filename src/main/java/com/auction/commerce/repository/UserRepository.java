@@ -11,7 +11,7 @@ import com.auction.commerce.entity.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, String>{
 
-    @Query("SELECT u FROM User u WHERE u.username = ?1")
-    Optional<User> findByUsername(String username);
+    @Query("SELECT u.password FROM User u WHERE u.username = ?1")
+    Optional<String> findByUsername(String username);
 }
 
